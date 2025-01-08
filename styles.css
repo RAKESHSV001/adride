@@ -1,0 +1,136 @@
+/* General Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Body Styling */
+body {
+  font-family: 'Russo One', sans-serif;
+  background: url('your-background-image.jpg') no-repeat center center fixed;
+  background-size: cover;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* Container Styling */
+.container {
+  width: 100%;
+  max-width: 400px;
+  padding: 20px;
+  background: rgba(0, 0, 0, 0.8);
+  border-radius: 10px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.7);
+}
+
+/* Header Styling */
+.login-box h1 {
+  font-size: 2rem;
+  color: #FF0000;
+  text-align: center;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+.login-box p {
+  text-align: center;
+  color: #ddd;
+  margin-bottom: 20px;
+  font-size: 1rem;
+}
+
+/* Role Selection */
+.role-selection {
+  margin-bottom: 20px;
+}
+
+.role-selection label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 1rem;
+  color: #fff;
+}
+
+.role-selection select {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  font-size: 1rem;
+  outline: none;
+  transition: background 0.3s ease;
+}
+
+.role-selection select:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* Form Styling */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+form input {
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  font-size: 1rem;
+  outline: none;
+  transition: background 0.3s ease;
+}
+
+form input:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+form .btn {
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: #FF0000;
+  color: #fff;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+form .btn:hover {
+  background-color: #dd0000;
+  transform: scale(1.05);
+}
+
+/* Sign-Up Redirect */
+.login-box a {
+  color: #8e4fd1;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.login-box a:hover {
+  color: #ddd;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  body {
+    padding: 20px;
+  }
+
+  .login-box h1 {
+    font-size: 1.8rem;
+  }
+
+  form .btn {
+    font-size: 1rem;
+  }
+}

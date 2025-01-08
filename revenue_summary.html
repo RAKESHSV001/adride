@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Revenue Summary</title>
+</head>
+<body>
+    <h1>Your Revenue Summary</h1>
+    <ul>
+        {% for assignment in assignments %}
+            <li>
+                <h2>{{ assignment.title }}</h2>
+                <p>Status: {{ assignment.status }}</p>
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

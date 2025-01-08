@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assign Campaign</title>
+</head>
+<body>
+    <h1>Assign Campaign: {{ campaign.title }}</h1>
+    <form method="POST">
+        <label for="assignee">Assign to:</label>
+        <select id="assignee" name="assignee_id" required>
+            {% for assignee in assignees %}
+                <option value="{{ assignee.id }}">{{ assignee.name }} ({{ assignee.role }})</option>
+            {% endfor %}
+        </select>
+        <button type="submit">Assign</button>
+    </form>
+</body>
+</html>

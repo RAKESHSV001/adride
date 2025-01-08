@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AdRide Login/Sign-Up</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+  <div class="container">
+    <div class="login-box">
+      <h1>AdRide</h1>
+      <p>Connect. Advertise. Earn.</p>
+
+      <!-- Role Selection -->
+      <div class="role-selection">
+        <label for="role">I am a:</label>
+        <select id="role" name="role">
+          <option value="wall-owner">Wall Owner</option>
+          <option value="advertiser">Advertiser</option>
+          <option value="operator">Rickshaw/Helmet Operator</option>
+        </select>
+      </div>
+
+      <!-- Login Form -->
+<!-- Login Form -->
+<form id="login-form" action="/login" method="POST">
+  <input type="email" id="email" placeholder="Email" required>
+        <input type="password" id="password" placeholder="Password" required>
+        <button type="submit" class="btn">Log In</button>
+      </form>
+
+      <!-- Sign-Up Form -->
+      <form id="signup-form" style="display: none;">
+        <input type="text" id="signup-name" placeholder="Full Name" required>
+        <input type="email" id="signup-email" placeholder="Email" required>
+        <input type="password" id="signup-password" placeholder="Password" required>
+        <button type="submit" class="btn">Sign Up</button>
+      </form>
+
+      <!-- Toggle Between Forms -->
+      <p id="toggle-text">Don't have an account? <a href="#" id="toggle-link">Sign Up</a></p>
+    </div>
+  </div>
+
+  <script>
+    const loginForm = document.getElementById("login-form");
+    const signupForm = document.getElementById("signup-form");
+    const toggleLink = document.getElementById("toggle-link");
+    const toggleText = document.getElementById("toggle-text");
+
+    // Handle Form Toggle
+    toggleLink.addEventListener("click", (e) => {
+      e.preventDefault();
+      if (signupForm.style.display === "none") {
+        signupForm.style.display = "block";
+        loginForm.style.display = "none";
+        toggleText.innerHTML = `Already have an account? <a href="#" id="toggle-link">Log In</a>`;
+      } else {
+        signupForm.style.display = "none";
+        loginForm.style.display = "block";
+        toggleText.innerHTML = `Don't have an account? <a href="#" id="toggle-link">Sign Up</a>`;
+      }
+    });
+
+    // Handle Login Form Submission
+    loginForm.addEventListener("submit", async function (e) {
+      e.preventDefault();
+
+      const role = document.getElementById("role").value;
+      const email = document.getElementById("email").value;
+      const password = document.getElementById("password").value;
+
+      const response = await fetch("/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ role, email, password }),
+      });
+
+      const result = await response.json();
+      alert(result.message);
+    });
+
+    // Handle Sign-Up Form Submission
+    signupForm.addEventListener("submit", async function (e) {
+      e.preventDefault();
+
+      const name = document.getElementById("signup-name").value;
+      const email = document.getElementById("signup-email").value;
+      const password = document.getElementById("signup-password").value;
+
+      const response = await fetch("/signup", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name, email, password }),
+      });
+
+      const result = await response.json();
+      alert(result.message);
+    });
+  </script>
+</body>
+</html>

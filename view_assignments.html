@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Assignments</title>
+</head>
+<body>
+    <h1>Your Assignments</h1>
+    <ul>
+        {% for assignment in assignments %}
+            <li>
+                <h2>{{ assignment.campaign.title }}</h2>
+                <p>Status: {{ assignment.status }}</p>
+                {% if session['role'] in ['wall_owner', 'rickshaw_operator'] %}
+                    <form method="POST" action="{{ url_for('update_status', assignment_id=assignment.id) }}">
+                        <label for="status">Update Status:</label>
+                        <select name="status">
+                            <option value="Pending">Pending</option>
+                            <option value="In Progress">In Progress</option>
+                            <option value="Completed">Completed</option>
+                        </select>
+                        <button type="submit">Update</button>
+                    </form>
+                {% endif %}
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

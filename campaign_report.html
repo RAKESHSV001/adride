@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Campaign Report</title>
+</head>
+<body>
+    <h1>Campaign Performance Report</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Campaign Title</th>
+                <th>Number of Assignments</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for campaign in campaigns %}
+                <tr>
+                    <td>{{ campaign.title }}</td>
+                    <td>{{ campaign.assignments }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

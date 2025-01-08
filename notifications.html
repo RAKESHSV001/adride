@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notifications</title>
+</head>
+<body>
+    <h1>Your Notifications</h1>
+    <ul id="notifications-list"></ul>
+    <script>
+        fetch("/notifications")
+            .then(response => response.json())
+            .then(notifications => {
+                const list = document.getElementById("notifications-list");
+                notifications.forEach(notification => {
+                    const li = document.createElement("li");
+                    li.textContent = `${notification.timestamp}: ${notification.message}`;
+                    list.appendChild(li);
+                });
+            });
+    </script>
+</body>
+</html>

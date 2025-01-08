@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Campaign Feedback</title>
+</head>
+<body>
+    <h1>Campaign Feedback</h1>
+    <div id="feedback-list"></div>
+
+    <script>
+        const campaignId = 1;  // Set to the campaign ID you want to fetch feedback for
+
+        fetch(`/campaign_feedback/${campaignId}`)
+            .then(response => response.json())
+            .then(feedbacks => {
+                const feedbackList = document.getElementById("feedback-list");
+                if (feedbacks.message) {
+                    feedbackList.innerHTML = feedbacks.message;
+                } else {
+                    feedbacks.forEach(feedback => {
+                        const div = document.createElement("div");
+                        div.innerHTML = `
+                            <p><strong>Rating:</strong> ${feedback.rating}</p>
+                            <p><strong>Feedback:</strong> ${feedback.feedback}</p>
+                            <p><small>Submitted on: ${feedback.timestamp}</small></p>
+                        `;
+                        feedbackList.appendChild(div);
+                    });
+                }
+            });
+    </script>
+</body>
+</html>
